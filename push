@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# tambah semua perubahan
+git add .
+
+# minta input commit message
+read -p "Masukkan commit message: " msg
+
+# commit
+git commit -m "$msg"
+
+# push ke branch main
+git push origin main
+
+echo "✅ Commit & push berhasil!"
