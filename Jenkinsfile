@@ -11,17 +11,11 @@ pipeline {
                 echo("Hello Build") 
             }
         }
-    }
-
-    stages {
         stage("Test") {
             steps {
                 echo("Hello Test")
             }
         }
-    }
-
-    stages {
         stage("Deploy") {
             steps {
                 echo("Hello Deploy")
@@ -32,6 +26,15 @@ pipeline {
     post {
         always {
             echo "i will always say hello again!"
+        }
+        success {
+            echo "Yay, success"
+        }
+        failure {
+            echo "Oh no, failure"
+        }
+        cleanup {
+            echo "Don't care success or error"
         }
     }
 }
