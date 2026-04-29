@@ -4,17 +4,17 @@ pipeline {
 	  label "windows && java11"     
       }
     }
+
+    environment {
+        JAVA_HOME = "/usr/lib/jvm/java-11-openjdk-amd64"
+        PATH = "${JAVA_HOME}/bin:${env.PATH}"
+    }
     
     stages {
-        stage("Environment") {
-            steps {
-                sh("export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64")
-                sh("export PATH=$JAVA_HOME/bin:$PATH")
-            }
-        }
         stage("Build") {
             steps {
                 echo("Start Build")
+                sh("java -version")
                 sh("./mvnw compile clean compile test-compile")  
                 echo("Finish Build")  
             }
