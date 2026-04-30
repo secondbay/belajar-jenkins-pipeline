@@ -3,7 +3,6 @@ pipeline {
 
     environment {
         JAVA_HOME = "/usr/lib/jvm/java-11-openjdk-amd64"
-        PATH = "${JAVA_HOME}/bin:${env.PATH}"
     }
     
     stages {
@@ -32,7 +31,7 @@ pipeline {
                     label "linux && java11"
                     }
             }
-            
+
             steps {
                 script {
                     def data = [
