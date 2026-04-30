@@ -6,9 +6,23 @@ pipeline {
     }
     
     stages {
+        stage("Prepare") {
+            agent {
+                node {
+                    label "linux && java11"
+                }
+            }
+
+            steps {
+                echo("Start Job: ${env.JOB_NAME}")
+                echo("Start Build: ${env.BUILD_NUMBER}")
+                echo("Branch Name: ${env.BRANCH_NAME}")
+            }
+        }
+        
         stage("Build") {
-            agent{
-                node{
+            agent {
+                node {
                     label "linux && java11"
                     }
             }
@@ -26,8 +40,8 @@ pipeline {
             }
         }
         stage("Test") {
-            agent{
-                node{
+            agent {
+                node {
                     label "linux && java11"
                     }
             }
