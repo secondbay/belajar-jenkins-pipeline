@@ -35,8 +35,10 @@ pipeline {
                         'sallary':'Rp 7.000.000,00',
                         'job':'Devops Engineer'
                     ]
+                    
+                    writeJSON(file: 'profile.json', json: data)
                 }
-                writeJSON(file: 'profile.json', json: data)
+                
 
                 echo("Start Test")
                 sh("./mvnw test")
