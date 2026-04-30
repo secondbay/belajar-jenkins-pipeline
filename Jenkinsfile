@@ -1,9 +1,5 @@
 pipeline {
-    agent {
-	node {
-	  label "windows && java11"     
-      }
-    }
+    agent none
 
     environment {
         JAVA_HOME = "/usr/lib/jvm/java-11-openjdk-amd64"
@@ -12,6 +8,12 @@ pipeline {
     
     stages {
         stage("Build") {
+            agent{
+                node{
+                    label "linux && java11"
+                }
+            }
+
             steps {
                 script {
                     for(int i = 0; i < 10; i++) {
@@ -26,6 +28,12 @@ pipeline {
             }
         }
         stage("Test") {
+            agent{
+                node{
+                    label "linux && java11"
+                }
+            }
+
             steps {
                 echo("Start Test")
                 sh("./mvnw test")
@@ -33,6 +41,12 @@ pipeline {
             }
         }
         stage("Deploy") {
+            agent{
+                node{
+                    label "linux && java11"
+                }
+            }
+
             steps {
                 echo("Hello Deploy 1")
                 sleep(5)
