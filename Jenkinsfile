@@ -16,10 +16,11 @@ pipeline {
             steps {
                 echo("Start Job: ${env.JOB_NAME}")
                 echo("Start Build: ${env.BUILD_NUMBER}")
-                echo("Branch Name: ${env.BRANCH_NAME}")
+                echo("Tag Build: ${env.BUILD_TAG}")
+                echo("Node Name: ${env.NODE_NAME}")
             }
         }
-        
+
         stage("Build") {
             agent {
                 node {
