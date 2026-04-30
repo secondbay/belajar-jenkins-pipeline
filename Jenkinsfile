@@ -22,8 +22,7 @@ pipeline {
                 }
                 
                 echo("Start Build")
-                sh("java -version")
-                sh("./mvnw compile clean compile test-compile")  
+                sh("./mvnw clean compile test-compile")  
                 echo("Finish Build")  
             }
         }
