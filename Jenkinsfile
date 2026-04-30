@@ -1,11 +1,5 @@
 pipeline {
-    agent{
-        node{
-            label "linux && java11"
-        }
-    }
-        
-    
+    agent none
 
     environment {
         JAVA_HOME = "/usr/lib/jvm/java-11-openjdk-amd64"
@@ -14,6 +8,12 @@ pipeline {
     
     stages {
         stage("Build") {
+            agent{
+                node{
+                    label "linux && java11"
+                    }
+            }
+
             steps {
                 script {
                     for(int i = 0; i < 10; i++) {
@@ -27,6 +27,12 @@ pipeline {
             }
         }
         stage("Test") {
+            agent{
+                node{
+                    label "linux && java11"
+                    }
+            }
+            
             steps {
                 script {
                     def data = [
@@ -35,7 +41,7 @@ pipeline {
                         'sallary':'Rp 7.000.000,00',
                         'job':'Devops Engineer'
                     ]
-                    
+
                     writeJSON(file: 'profile.json', json: data)
                 }
                 
